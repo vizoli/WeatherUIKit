@@ -28,7 +28,7 @@ class CityListViewController: UITableViewController {
     }
     
     // Reload table view if data changes
-    func bindViewModel() {
+    private func bindViewModel() {
         cityListViewModel.cities.bind { [weak self] _ in
             self?.tableView.reloadData()
         }
