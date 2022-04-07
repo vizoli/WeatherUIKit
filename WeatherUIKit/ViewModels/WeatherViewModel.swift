@@ -10,11 +10,11 @@ import UIKit.UIImage
 
 protocol WeatherViewModelStrategy: LoadingStateClass {
     var queryCityName: String { get }
-    var temperature: String { get }
-    var condition: String { get }
-    var temperatureMaxMin: String { get }
-    var windSpeed: String { get }
-    var icon: UIImage? { get }
+    var temperature: Dynamic<String> { get }
+    var condition: Dynamic<String> { get }
+    var temperatureMaxMin: Dynamic<String> { get }
+    var windSpeed: Dynamic<String> { get }
+    var icon: Dynamic<String> { get }
 
     init(queryCityName: String)
 
@@ -25,6 +25,11 @@ class WeatherViewModel: LoadingStateClass, WeatherViewModelStrategy {
     private var weather: WeatherResponse?
     
     var queryCityName: String
+    var temperature = Dynamic("")
+    var condition = Dynamic("")
+    var temperatureMaxMin = Dynamic("")
+    var windSpeed = Dynamic("")
+    var icon = Dynamic("")
     
     required init(queryCityName: String) {
         self.queryCityName = queryCityName
@@ -42,6 +47,7 @@ class WeatherViewModel: LoadingStateClass, WeatherViewModelStrategy {
                 case let .success(weatherResponse):
                     self?.weather = weatherResponse
                     self?.loadingState.value = .success
+                    self?.assignValues(weather: weatherResponse)
                 case let .failure(error):
                     print(error)
                     self?.loadingState.value = .failure
@@ -49,9 +55,17 @@ class WeatherViewModel: LoadingStateClass, WeatherViewModelStrategy {
             }
         }
     }
+    
+    func assignValues(weather: WeatherResponse) {
+        temperature.value = "\(numberFormat(weather.main.temperature))°C"
+        condition.value = "\(weather.weather.first?.main ?? "") - \(weather.weather.first?.description ?? "")"
+        temperatureMaxMin.value = "Max: \(numberFormat(weather.main.temperatureMax))°C Min: \(numberFormat(weather.main.temperatureMin))°C"
+        windSpeed.value = "Wind: \(numberFormat(weather.wind.speed)) m/sec"
+        icon.value = weather.weather.first?.icon ?? ""
+    }
 }
 
-// Expose model to view
+// Helper function
 extension WeatherViewModel {
     private var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
@@ -66,26 +80,4 @@ extension WeatherViewModel {
         }
         return numberFormatter.string(from: number as NSNumber) ?? ""
     }
-    
-    var temperature: String {
-        "\(numberFormat(weather?.main.temperature))°C"
-    }
-    
-    var condition: String {
-        "\(weather?.weather.first?.main ?? "") - \(weather?.weather.first?.description ?? "")"
-    }
-    
-    var temperatureMaxMin: String {
-        "Max: \(numberFormat(weather?.main.temperatureMax))°C Min: \(numberFormat(weather?.main.temperatureMin))°C"
-    }
-    
-    var windSpeed: String {
-        "Wind: \(numberFormat(weather?.wind.speed)) m/sec"
-    }
-
-    // Use Kingfisher for image fetching
-    var icon: UIImage? {
-        UIImage()
-    }
-    
 }

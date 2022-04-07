@@ -9,7 +9,7 @@ import UIKit
 
 // List of city names
 class CityListViewController: UITableViewController {
-    var cityListViewModel: CityListViewModelStrategy = MockCityListViewModel()
+    var cityListViewModel: CityListViewModelStrategy = StaticCityListViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

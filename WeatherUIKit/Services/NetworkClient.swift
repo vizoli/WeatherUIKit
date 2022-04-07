@@ -19,7 +19,7 @@ class NetworkClient {
     
     func getWeatherBy(cityName: String, completion: @escaping (Result<WeatherResponse, NetworkError>) -> Void) {
         // URL build
-        guard let url = weatherUrlBuilder(cityName: cityName) else {
+        guard let url = WeatherAPI.weatherUrlBuilder(cityName: cityName) else {
             return completion(.failure(.urlError))
         }
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -37,16 +37,4 @@ class NetworkClient {
         }.resume()
     }
     
-    private func weatherUrlBuilder(cityName: String) -> URL? {
-        var urlBuilder = URLComponents()
-        urlBuilder.scheme = OpenWeatherConstants.scheme
-        urlBuilder.host = OpenWeatherConstants.host
-        urlBuilder.path = OpenWeatherConstants.path
-        urlBuilder.queryItems = [
-            URLQueryItem(name: "q", value: cityName),
-            URLQueryItem(name: "units", value: "metric"),
-            URLQueryItem(name: "appid", value: OpenWeatherConstants.apiKey)
-        ]
-        return urlBuilder.url
-    }
 }

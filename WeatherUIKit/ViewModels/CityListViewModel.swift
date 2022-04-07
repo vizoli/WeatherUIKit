@@ -13,10 +13,10 @@ protocol CityListViewModelStrategy {
 }
 
 // View model for cities list
-struct MockCityListViewModel: CityListViewModelStrategy {
+struct StaticCityListViewModel: CityListViewModelStrategy {
     let cities = Dynamic<[CityViewModel]>([])
     
-    private let mockCities: [City] = [
+    private let staticCities: [City] = [
         City(name: "Győr", state: "Győr-Moson-Sopron megye"),
         City(name: "Kecskemét", state: "Bács-Kiskun megye"),
         City(name: "Debrecen", state: "Hajdú-Bihar megye"),
@@ -26,7 +26,7 @@ struct MockCityListViewModel: CityListViewModelStrategy {
     ]
     
     func getCities() {
-        cities.value = mockCities.map(CityViewModel.init)
+        cities.value = staticCities.map(CityViewModel.init)
     }
     
 }

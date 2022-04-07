@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		912A28C327FE47B7004DCDF9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 912A28C227FE47B7004DCDF9 /* Kingfisher */; };
 		916AD38727FD904B00739999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD38627FD904B00739999 /* AppDelegate.swift */; };
 		916AD38927FD904B00739999 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD38827FD904B00739999 /* SceneDelegate.swift */; };
 		916AD38E27FD904B00739999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 916AD38C27FD904B00739999 /* Main.storyboard */; };
@@ -21,7 +22,7 @@
 		916AD3AD27FDE6BF00739999 /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD3AC27FDE6BF00739999 /* CityViewModel.swift */; };
 		916AD3B027FDEF4700739999 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD3AF27FDEF4700739999 /* Dynamic.swift */; };
 		916AD3B227FE12DA00739999 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD3B127FE12DA00739999 /* CityCell.swift */; };
-		916AD3B427FE14C700739999 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD3B327FE14C700739999 /* Constants.swift */; };
+		916AD3B427FE14C700739999 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD3B327FE14C700739999 /* WeatherAPI.swift */; };
 		916AD3B627FE154F00739999 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD3B527FE154F00739999 /* NetworkClient.swift */; };
 		916AD3B827FE270800739999 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD3B727FE270800739999 /* LoadingState.swift */; };
 /* End PBXBuildFile section */
@@ -43,7 +44,7 @@
 		916AD3AC27FDE6BF00739999 /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		916AD3AF27FDEF4700739999 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		916AD3B127FE12DA00739999 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
-		916AD3B327FE14C700739999 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		916AD3B327FE14C700739999 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		916AD3B527FE154F00739999 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		916AD3B727FE270800739999 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				912A28C327FE47B7004DCDF9 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,9 +106,9 @@
 		916AD39B27FD929E00739999 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				916AD3B727FE270800739999 /* LoadingState.swift */,
 				916AD3AC27FDE6BF00739999 /* CityViewModel.swift */,
 				916AD3AA27FDE51800739999 /* CityListViewModel.swift */,
+				916AD3B727FE270800739999 /* LoadingState.swift */,
 				916AD3A827FDC09B00739999 /* WeatherViewModel.swift */,
 			);
 			path = ViewModels;
@@ -126,7 +128,7 @@
 		916AD39D27FD92BE00739999 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				916AD3B327FE14C700739999 /* Constants.swift */,
+				916AD3B327FE14C700739999 /* WeatherAPI.swift */,
 				916AD3B527FE154F00739999 /* NetworkClient.swift */,
 			);
 			path = Services;
@@ -156,6 +158,9 @@
 			dependencies = (
 			);
 			name = WeatherUIKit;
+			packageProductDependencies = (
+				912A28C227FE47B7004DCDF9 /* Kingfisher */,
+			);
 			productName = WeatherUIKit;
 			productReference = 916AD38327FD904B00739999 /* WeatherUIKit.app */;
 			productType = "com.apple.product-type.application";
@@ -184,6 +189,9 @@
 				Base,
 			);
 			mainGroup = 916AD37A27FD904B00739999;
+			packageReferences = (
+				912A28C127FE47B7004DCDF9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 916AD38427FD904B00739999 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -224,7 +232,7 @@
 				916AD3A527FDB88700739999 /* Weather.swift in Sources */,
 				916AD3AD27FDE6BF00739999 /* CityViewModel.swift in Sources */,
 				916AD38927FD904B00739999 /* SceneDelegate.swift in Sources */,
-				916AD3B427FE14C700739999 /* Constants.swift in Sources */,
+				916AD3B427FE14C700739999 /* WeatherAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +450,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		912A28C127FE47B7004DCDF9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		912A28C227FE47B7004DCDF9 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 912A28C127FE47B7004DCDF9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 916AD37B27FD904B00739999 /* Project object */;
 }
