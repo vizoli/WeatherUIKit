@@ -36,6 +36,7 @@ class WeatherDetailViewController: UIViewController {
         loadingLabel.isHidden = true
         errorLabel.isHidden = true
         title = weatherViewModel.queryCityName
+        
         weatherViewModel.getWeatherByCityName()
     }
     
