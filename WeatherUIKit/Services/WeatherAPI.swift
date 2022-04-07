@@ -14,13 +14,13 @@ struct WeatherAPI {
     
     static func weatherUrlBuilder(cityName: String) -> URL? {
         var urlBuilder = URLComponents()
-        urlBuilder.scheme = WeatherAPI.scheme
-        urlBuilder.host = WeatherAPI.host
-        urlBuilder.path = WeatherAPI.path
+        urlBuilder.scheme = scheme
+        urlBuilder.host = host
+        urlBuilder.path = path
         urlBuilder.queryItems = [
             URLQueryItem(name: "q", value: cityName),
             URLQueryItem(name: "units", value: "metric"),
-            URLQueryItem(name: "appid", value: WeatherAPI.apiKey)
+            URLQueryItem(name: "appid", value: apiKey)
         ]
         return urlBuilder.url
     }
